@@ -18,7 +18,9 @@ pipeline {
 	stage ("push") {
              steps {
 		sh "docker push mabayomi07/calculator"
-      }
+	    }
+	}
+	
 }
 post {
     always {
