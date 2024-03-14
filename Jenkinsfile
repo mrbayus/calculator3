@@ -36,3 +36,4 @@ post {
 	   message: 	      'The pipeline ${currentBuild.fullDisplayName} failed.'
 	}
 }
+}
