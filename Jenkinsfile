@@ -44,10 +44,6 @@ pipeline {
 		sh "docker stop calculator"
 	    }
 		
-	success {
-	    always {
-		sh "docker logout"
-	    }
 	}
-}
+
 }
