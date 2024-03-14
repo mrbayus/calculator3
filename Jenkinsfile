@@ -24,10 +24,7 @@ pipeline {
 	}
 	stage ("push") {
              steps {
-		script {
-		     withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ])
 		sh "docker push mabayomi07/calculator"
-		}
 	    }
      }
 	stage ("Deploy to staging") {
