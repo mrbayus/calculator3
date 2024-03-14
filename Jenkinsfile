@@ -3,7 +3,9 @@ pipeline {
     triggers {
 	pollSCM('* * * * *')
 	}
- 
+    environment {
+	DOCKERHUB_CREDENTIALS = credentials('mabayomi07-dockerhub')
+	}
     stages {
 	stage("Package") {
 	     steps {
@@ -15,6 +17,11 @@ pipeline {
 		sh "docker build -t mabayomi07/calculator ."
 	    }
          }
+	stage ('Login to Docker')
+	     steps {
+		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERBUNCREDENTIAL_USER --password-stdin'
+            }
+	}
 	stage ("push") {
              steps {
 		script {
