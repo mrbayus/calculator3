@@ -15,6 +15,9 @@ pipeline {
 		sh "docker build -t mabayomi07/calculator ."
 	    }
          }
+	stage ("push") {
+             steps {
+		sh "docker push mabayomi07/calculator"
       }
 }
 post {
