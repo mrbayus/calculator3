@@ -4,7 +4,7 @@ pipeline {
         pollSCM('* * * * *')
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('mabayomi07-dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials('mabayomi-dockerhub')
     }
     stages {
         stage("Package") {
@@ -32,6 +32,10 @@ pipeline {
                 sh "docker run -d --rm -p 8765:8080 --name calculator mabayomi07/calculator"
             }
         }
+	stage ("Acceptance test") {
+	    steps {
+		sleep 60
+		sh "chmod +x acceptance_test.sh ./acceptance_test.sh"
     }
 }
 
